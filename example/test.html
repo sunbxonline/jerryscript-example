@@ -1,0 +1,33 @@
+<script >
+var o = {}
+
+var value = 0;
+Object.defineProperty(o, "a", 
+{ 
+ get: function() {
+  console.log('getter');
+  return value;
+ },
+ set: function(v) {
+  console.log('setter');
+  value = v;
+ },
+}
+);
+
+function ImageObject() {
+  this.src="image";
+}
+
+ImageObject.prototype = o;
+
+var i = new ImageObject();
+i.a = 20;
+console.log(i.a);
+
+var iObj = {};
+iObj.__proto__ = o;
+
+iObj.a = 30;
+console.log(iObj.a);
+</script>
